@@ -24,4 +24,7 @@ export default class Coda {
   async getTable(docId, tableId) {
     return await method.getTable(docId, tableId, this.token);
   }
+  async getRow(docId, tableId, rowId) {
+    return await method.getRow(docId, tableId, rowId, this.token);
+  }
 }
