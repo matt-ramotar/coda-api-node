@@ -13,12 +13,12 @@ export default class Coda {
     return await method.getView(docId, viewId, this.token);
   }
 
-  async listCols(docId, viewId) {
-    return await method.listCols(docId, viewId, this.token);
+  async listViewCols(docId, viewId) {
+    return await method.listViewCols(docId, viewId, this.token);
   }
 
-  async listRows(docId, viewId) {
-    return await method.listRows(docId, viewId, this.token);
+  async listViewRows(docId, viewId) {
+    return await method.listViewRows(docId, viewId, this.token);
   }
 
   async getTable(docId, tableId) {

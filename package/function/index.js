@@ -1,6 +1,5 @@
-export { default as getDoc } from './getDoc.js';
-export { default as getView } from './getView.js';
-export { default as listCols } from './listCols.js';
-export { default as listRows } from './ListRows.js';
-export { default as getTable } from './getTable.js';
-export { default as getRow } from './getRow.js';
+export * from './Col/index.js';
+export * from './Doc/index.js';
+export * from './Row/index.js';
+export * from './Table/index.js';
+export * from './View/index.js';
