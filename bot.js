@@ -6,6 +6,8 @@ const { Coda } = pkg;
 (async () => {
   const coda = new Coda(env.apiToken.coda);
   const tag = await coda.getDoc(env.Tag.id);
-  const today = await coda.getView(env.Tag.id, env.Today.id, env.apiToken.coda);
-  console.log(today);
+  const todayView = await coda.getView(env.Tag.id, env.Today.id, env.apiToken.coda);
+  const cols = await coda.listCols(env.Tag.id, env.Today.id, env.apiToken.coda);
+  const todayRow = await coda.listRows(env.Tag.id, env.Today.id, env.apiToken.coda);
+  console.log(await rows);
 })();
