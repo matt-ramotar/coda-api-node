@@ -16,4 +16,8 @@ export default class Coda {
   async listCols(docId, viewId) {
     return await method.listCols(docId, viewId, this.token);
   }
+
+  async listRows(docId, viewId) {
+    return await method.listRows(docId, viewId, this.token);
+  }
 }
