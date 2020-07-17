@@ -9,5 +9,6 @@ const { Coda } = pkg;
   const todayView = await coda.getView(env.Tag.id, env.Today.id, env.apiToken.coda);
   const cols = await coda.listCols(env.Tag.id, env.Today.id, env.apiToken.coda);
   const todayRow = await coda.listRows(env.Tag.id, env.Today.id, env.apiToken.coda);
-  console.log(await rows);
+  const curriculum = await coda.getTable(env.Tag.id, env.Curriculum.id, env.apiToken.coda);
+  console.log(await curriculum);
 })();
