@@ -1,4 +1,5 @@
 import Coda from '../index.js';
+import { Doc } from '../package/lib/index.js';
 
 /**
  * @name Coda class
@@ -9,6 +10,7 @@ const token = process.env.API_TOKEN;
 const docId = process.env.DOC_ID;
 const tableId = process.env.TABLE_ID;
 const viewId = process.env.VIEW_ID;
+const link = process.env.TEST_LINK;
 
 let coda;
 
@@ -30,21 +32,33 @@ describe('whoAmI()', () => {
 
 describe('resolveBrowserLink()', () => {
   let response;
-  beforeEach(async () => {
-    response = await coda.resolveBrowserLink(
-      'https://coda.io/d/tag_dUaRHGm0rXX/LO_suQ8R#View-of-objectives-data_tu10k/r259',
-    );
-  });
+  beforeEach(async () => (response = await coda.resolveBrowserLink(link)));
   test('returns metadata using API link', () => {
     const type = response.type;
     expect(type).toBe('apiLink');
   });
-  test('returns id of target Coda object', () => {
+  test('returns id of target resource', () => {
     const resourceId = response.resource.id;
     expect(resourceId).toBe('i-YgGE8Vfg1D');
   });
-  test('returns type of target Coda object', () => {
+  test('returns type of target resource', () => {
     const resourceType = response.resource.type;
     expect(resourceType).toBe('row');
+  });
+});
+
+describe('getDoc()', () => {
+  let response;
+  beforeEach(async () => {
+    response = await coda.getDoc(docId);
+  });
+
+  test('returns specified doc', () => {
+    console.log(response);
+    expect(response.id).toBe(docId);
+  });
+
+  test('creates new instance of Doc class', () => {
+    expect(response).toBeInstanceOf(Doc);
   });
 });
