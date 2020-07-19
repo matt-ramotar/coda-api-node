@@ -17,7 +17,7 @@ beforeAll(() => {
   jest.mock('../package/Coda.js');
 });
 
-describe('whoAmI', () => {
+describe('whoAmI()', () => {
   test('returns name of current user', async () => {
     const name = (await coda.whoAmI()).name;
     expect(name).toBe('Matthew Ramotar');
@@ -28,29 +28,23 @@ describe('whoAmI', () => {
   });
 });
 
-describe('resolveBrowserLink', () => {
-  test('returns metadata using API link', async () => {
-    const response = (
-      await coda.resolveBrowserLink(
-        'https://coda.io/d/tag_dUaRHGm0rXX/LO_suQ8R#View-of-objectives-data_tu10k/r259',
-      )
-    ).type;
-    expect(response).toBe('apiLink');
+describe('resolveBrowserLink()', () => {
+  let response;
+  beforeEach(async () => {
+    response = await coda.resolveBrowserLink(
+      'https://coda.io/d/tag_dUaRHGm0rXX/LO_suQ8R#View-of-objectives-data_tu10k/r259',
+    );
   });
-  test('returns id of target Coda object', async () => {
-    const id = (
-      await coda.resolveBrowserLink(
-        'https://coda.io/d/tag_dUaRHGm0rXX/LO_suQ8R#View-of-objectives-data_tu10k/r259',
-      )
-    ).resource.id;
-    expect(id).toBe('i-YgGE8Vfg1D');
+  test('returns metadata using API link', () => {
+    const type = response.type;
+    expect(type).toBe('apiLink');
   });
-  test('returns type of target Coda object', async () => {
-    const type = (
-      await coda.resolveBrowserLink(
-        'https://coda.io/d/tag_dUaRHGm0rXX/LO_suQ8R#View-of-objectives-data_tu10k/r259',
-      )
-    ).resource.type;
-    expect(type).toBe('row');
+  test('returns id of target Coda object', () => {
+    const resourceId = response.resource.id;
+    expect(resourceId).toBe('i-YgGE8Vfg1D');
+  });
+  test('returns type of target Coda object', () => {
+    const resourceType = response.resource.type;
+    expect(resourceType).toBe('row');
   });
 });
