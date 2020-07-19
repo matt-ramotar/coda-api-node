@@ -20,13 +20,15 @@ beforeAll(() => {
 });
 
 describe('whoAmI()', () => {
-  test('returns name of current user', async () => {
-    const name = (await coda.whoAmI()).name;
-    expect(name).toBe('Matthew Ramotar');
+  let response;
+  beforeEach(async () => {
+    response = await coda.whoAmI();
+  });
+  test('returns name of current user', () => {
+    expect(response.name).toBe('Matthew Ramotar');
   });
   test('returns name of token', async () => {
-    const tokenName = (await coda.whoAmI()).tokenName;
-    expect(tokenName).toBe('coda-api-node');
+    expect(response.tokenName).toBe('coda-api-node');
   });
 });
 
@@ -34,16 +36,13 @@ describe('resolveBrowserLink()', () => {
   let response;
   beforeEach(async () => (response = await coda.resolveBrowserLink(link)));
   test('returns metadata using API link', () => {
-    const type = response.type;
-    expect(type).toBe('apiLink');
+    expect(response.type).toBe('apiLink');
   });
   test('returns id of target resource', () => {
-    const resourceId = response.resource.id;
-    expect(resourceId).toBe('i-YgGE8Vfg1D');
+    expect(response.resource.id).toBe('i-YgGE8Vfg1D');
   });
   test('returns type of target resource', () => {
-    const resourceType = response.resource.type;
-    expect(resourceType).toBe('row');
+    expect(response.resource.type).toBe('row');
   });
 });
 
@@ -54,7 +53,6 @@ describe('getDoc()', () => {
   });
 
   test('returns specified doc', () => {
-    console.log(response);
     expect(response.id).toBe(docId);
   });
 
