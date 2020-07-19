@@ -13,19 +13,20 @@
   "scripts": {
     "test": "jest"
   },
-  "devDependencies": {
-    "@babel/plugin-transform-modules-commonjs": "^7.10.4",
-    "@babel/preset-env": "^7.10.4",
-    "axios": "^0.19.2",
-    "babel-jest": "26.1.0",
-    "jest": "^26.1.0"
-  },
-  "babel": {
-    "presets": [
-      "@babel/preset-env"
-    ]
-  },
   "dependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.10.4",
+    "babel-plugin-styled-components": "^1.10.7",
     "dotenv": "^8.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.10.5",
+    "@babel/plugin-transform-modules-commonjs": "^7.10.4",
+    "@babel/plugin-transform-runtime": "^7.10.5",
+    "@babel/preset-env": "^7.10.4",
+    "@babel/register": "^7.10.5",
+    "axios": "^0.19.2",
+    "babel-core": "^6.26.3",
+    "babel-jest": "^26.1.0",
+    "jest": "^26.1.0"
   }
 }

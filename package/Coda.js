@@ -1,5 +1,4 @@
-import API from './api/index.js';
-import { Column, Doc, Row, Table, View } from './class/index.js';
+import { API, Column, Doc, Row, Table, View } from './lib/index.js';
 
 export default class Coda {
   constructor(token) {

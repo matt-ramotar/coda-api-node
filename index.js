@@ -1,1 +1,5 @@
-export { default as Coda } from './lib/Coda.js';
+require('@babel/register');
+require('dotenv').config();
+
+import Coda from './package/Coda.js';
+export default Coda;

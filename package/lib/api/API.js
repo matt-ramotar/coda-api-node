@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 export default class API {
   constructor(token) {
     this.instance = axios.create({
